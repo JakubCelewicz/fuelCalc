@@ -1,7 +1,7 @@
 class Refuel {
   double price;
   double amount;
-  int mileage;
+  double mileage;
 
   Refuel({this.price, this.amount, this.mileage});
 
