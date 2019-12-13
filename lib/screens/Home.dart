@@ -25,9 +25,17 @@ class _HomeState extends State<Home> {
               child: RefuelList(
                 refuels: Provider.of<Refuels>(context).refuels,
               ),
-            )
+            ),
           ],
         ),
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          print('start paragon scan');
+          Navigator.pushNamed(context, '/scan');
+        },
+        tooltip: 'Add from photo',
+        child: Icon(Icons.photo_camera),
       ),
     );
   }

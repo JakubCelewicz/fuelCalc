@@ -24,7 +24,6 @@ class _RefuelFormState extends State<RefuelForm> {
               SizedBox(
                 width: 200.0,
                 child: TextField(
-                  autofocus: true,
                   decoration: InputDecoration(labelText: 'Fuel price'),
                   inputFormatters: [fuelPriceFormatter],
                   keyboardType: TextInputType.number,
