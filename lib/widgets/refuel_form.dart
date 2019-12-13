@@ -10,11 +10,28 @@ class RefuelForm extends StatefulWidget {
 }
 
 class _RefuelFormState extends State<RefuelForm> {
+  var priceController = TextEditingController();
+  var amountController = TextEditingController();
+
+  @override
+  void dispose() {
+    // Clean up the controller when the widget is disposed.
+    priceController.dispose();
+    amountController.dispose();
+    super.dispose();
+  }
+
   double price;
   double amount;
   double mileage;
   @override
   Widget build(BuildContext context) {
+    var newRefuel = Provider.of<Refuels>(context).newRefuel;
+    print(newRefuel);
+
+    if (newRefuel != null) priceController.text = newRefuel.price.toString();
+    if (newRefuel != null) amountController.text = newRefuel.amount.toString();
+
     return Container(
       padding: EdgeInsets.all(20.0),
       child: Column(
@@ -24,6 +41,7 @@ class _RefuelFormState extends State<RefuelForm> {
               SizedBox(
                 width: 200.0,
                 child: TextField(
+                  controller: priceController,
                   decoration: InputDecoration(labelText: 'Fuel price'),
                   inputFormatters: [fuelPriceFormatter],
                   keyboardType: TextInputType.number,
@@ -37,6 +55,7 @@ class _RefuelFormState extends State<RefuelForm> {
               ),
               Expanded(
                   child: TextField(
+                controller: amountController,
                 keyboardType: TextInputType.number,
                 decoration: InputDecoration(labelText: 'Fuel amount'),
                 onChanged: (newPrice) {

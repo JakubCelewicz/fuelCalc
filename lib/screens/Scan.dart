@@ -14,14 +14,15 @@ class Scan extends StatelessWidget {
       body: Container(
         child: Center(
           child: RaisedButton(
-            child: Text('scaned photo'),
+            child: Text('Scan photo'),
             onPressed: () {
-              Provider.of<Refuels>(context).addRefuel(Refuel(
-                price: 4.88,
-                amount: 44.3,
+              Provider.of<Refuels>(context).getRefuelData(Refuel(
+                price: 6.66,
+                amount: 66.6,
                 mileage: 188.246,
               ));
               Navigator.pop(context);
+              print('data passed to Form');
             },
           ),
         ),

@@ -6,6 +6,10 @@ class Refuel {
   Refuel({this.price, this.amount, this.mileage});
 
   double get spend {
-    return price * amount;
-  }
+    if (price != null && amount != null) {
+      return price * amount;
+    } else {
+      return 0;
+    }
+  } //TODO improve this
 }

@@ -6,8 +6,15 @@ class Refuels extends ChangeNotifier {
     Refuel(price: 4.77, amount: 44.38, mileage: 125000),
   ];
 
+  Refuel newRefuel;
+
   void addRefuel(Refuel newRefuel) {
     refuels.add(newRefuel);
+    notifyListeners();
+  }
+
+  void getRefuelData(Refuel refuelData) {
+    newRefuel = refuelData;
     notifyListeners();
   }
 }
