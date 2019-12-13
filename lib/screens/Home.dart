@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_fuel/widgets/refuel_form.dart';
 import 'package:flutter_fuel/widgets/RefuelList.dart';
-import 'package:provider/provider.dart';
-import 'package:flutter_fuel/refuels.dart';
 
 class Home extends StatefulWidget {
   @override
@@ -22,9 +20,7 @@ class _HomeState extends State<Home> {
           children: <Widget>[
             RefuelForm(),
             Expanded(
-              child: RefuelList(
-                refuels: Provider.of<Refuels>(context).refuels,
-              ),
+              child: RefuelList(),
             ),
           ],
         ),
