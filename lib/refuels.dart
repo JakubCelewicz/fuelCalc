@@ -2,19 +2,34 @@ import 'package:flutter/material.dart';
 import 'model/Refuel.dart';
 
 class Refuels extends ChangeNotifier {
-  List<Refuel> refuels = [
-    Refuel(price: 4.77, amount: 44.38, mileage: 125000),
+  List<Refuel> _refuels = [
+    // Refuel(price: 4.77, amount: 44.38, mileage: 125000),
   ];
 
-  Refuel newRefuel;
+  Refuel _newRefuel;
+
+  get refuels {
+    return _refuels;
+  }
+
+  get newRefuel {
+    return _newRefuel;
+  }
 
   void addRefuel(Refuel newRefuel) {
-    refuels.add(newRefuel);
+    _refuels.add(newRefuel);
+    _newRefuel = Refuel();
+    notifyListeners();
+  }
+
+  void removeRefuel(id) {
+    print('remove');
+    _refuels.removeWhere((item) => item.id == id);
     notifyListeners();
   }
 
   void getRefuelData(Refuel refuelData) {
-    newRefuel = refuelData;
+    _newRefuel = refuelData;
     notifyListeners();
   }
 }

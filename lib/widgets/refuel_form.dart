@@ -21,16 +21,27 @@ class _RefuelFormState extends State<RefuelForm> {
     super.dispose();
   }
 
-  double price;
-  double amount;
-  double mileage;
+  var price;
+  var amount;
+  var mileage;
+
   @override
   Widget build(BuildContext context) {
     var newRefuel = Provider.of<Refuels>(context).newRefuel;
-    print(newRefuel);
 
-    if (newRefuel != null) priceController.text = newRefuel.price.toString();
-    if (newRefuel != null) amountController.text = newRefuel.amount.toString();
+    if (newRefuel.price == null) {
+      priceController.clear();
+    } else {
+      price = newRefuel.price;
+      priceController.text = newRefuel.price.toString();
+    }
+
+    if (newRefuel.amount == null) {
+      amountController.clear();
+    } else {
+      amount = newRefuel.amount;
+      amountController.text = newRefuel.amount.toString();
+    }
 
     return Container(
       padding: EdgeInsets.all(20.0),

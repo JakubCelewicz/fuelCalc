@@ -9,10 +9,21 @@ class RefuelList extends StatelessWidget {
     return Consumer<Refuels>(builder: (context, refuelsData, child) {
       return ListView.builder(
         itemBuilder: (context, index) {
-          return RefuelTile(
-            total: refuelsData.refuels[index].spend.toStringAsFixed(2),
-            price: refuelsData.refuels[index].price.toString(),
-            amount: refuelsData.refuels[index].amount.toString(),
+          return Dismissible(
+            key: Key(refuelsData.refuels[index].id.toString()),
+            child: RefuelTile(
+              total: refuelsData.refuels[index].spend.toStringAsFixed(2),
+              price: refuelsData.refuels[index].price.toString(),
+              amount: refuelsData.refuels[index].amount.toString(),
+              id: refuelsData.refuels[index].id.toString(),
+            ),
+            onDismissed: (direction) {
+              refuelsData.removeRefuel(refuelsData.refuels[index]);
+              refuelsData.refuels.removeAt(index);
+            },
+            background: Container(
+              color: Colors.red,
+            ),
           );
         },
         itemCount: refuelsData.refuels.length,

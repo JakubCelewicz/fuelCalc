@@ -1,7 +1,12 @@
+import 'package:uuid/uuid.dart';
+
+var uuid = new Uuid();
+
 class Refuel {
   double price;
   double amount;
   double mileage;
+  final id = uuid.v1();
 
   Refuel({this.price, this.amount, this.mileage});
 
