@@ -25,19 +25,26 @@ class _RefuelFormState extends State<RefuelForm> {
   var amount;
   var mileage;
 
+  clearFormData() {
+    priceController.clear();
+    amountController.clear();
+    price = null;
+    amount = null;
+  }
+
   @override
   Widget build(BuildContext context) {
     var newRefuel = Provider.of<Refuels>(context).newRefuel;
 
     if (newRefuel.price == null) {
-      priceController.clear();
+      clearFormData();
     } else {
       price = newRefuel.price;
       priceController.text = newRefuel.price.toString();
     }
 
     if (newRefuel.amount == null) {
-      amountController.clear();
+      clearFormData();
     } else {
       amount = newRefuel.amount;
       amountController.text = newRefuel.amount.toString();
@@ -100,6 +107,7 @@ class _RefuelFormState extends State<RefuelForm> {
                       amount: amount,
                       mileage: mileage,
                     ));
+                    clearFormData();
                   });
                 },
               )),
