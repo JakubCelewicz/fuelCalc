@@ -36,14 +36,14 @@ class _RefuelFormState extends State<RefuelForm> {
   Widget build(BuildContext context) {
     var newRefuel = Provider.of<Refuels>(context).newRefuel;
 
-    if (newRefuel.price == null) {
+    if (newRefuel == null || newRefuel.price == null) {
       clearFormData();
     } else {
       price = newRefuel.price;
       priceController.text = newRefuel.price.toString();
     }
 
-    if (newRefuel.amount == null) {
+    if (newRefuel == null || newRefuel.amount == null) {
       clearFormData();
     } else {
       amount = newRefuel.amount;
